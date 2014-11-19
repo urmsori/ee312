@@ -1,21 +1,0 @@
-
-TB.v,190
-reg				CLK;15,395
-reg				RST;16,407
-reg		[1:0]	COIN;17,419
-wire			MONEY;19,437
-wire			COKE;20,451
-wire			CHANGE;21,464
-parameter PER 25,501
-parameter HPER 26,522
-	$dumpvars;92,1361
-
-Vending_Machine.v,163
-assign MONEY 25,621
-assign COKE 26,645
-assign CHANGE 27,667
-localparam ST_INIT 29,694
-always @ 40,891
-		r_money 43,962
-		r_coke 49,1232
-		r_change 50,1388
