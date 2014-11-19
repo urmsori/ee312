@@ -1,0 +1,24 @@
+
+KRP8.v,56
+    REGFILE    #(.AW(5), .ENTRY(32))    RegFile 43,908
+
+model.v,65
+    FUNCTION TABLE:TABLE5,86
+    FUNCTION TABLE:TABLE81,2498
+
+testbench.v,517
+module testbench;12,237
+    reg             CLK,14,256
+    reg             CLK, RST;14,256
+    parameter   PER 17,313
+    parameter   HPER 18,340
+    wire              IREQ;24,432
+    wire    [29:0]    IADDR;25,460
+    wire    [31:0]    INSTR;26,489
+    wire              DREQ;27,518
+    wire              nDRW;28,546
+    wire    [29:0]    DADDR;29,574
+    wire    [31:0]    DWDATA;30,603
+    wire    [31:0]    DRDATA;31,633
+	defparam testbench.INST_MEM.INIT_FILE INIT_FILE75,1577
+		$dumpvars;90,1820
