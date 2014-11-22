@@ -1,0 +1,22 @@
+#include <stdio.h>
+#include <stdbool.h>
+
+void main()
+{
+  FILE *fp = fopen("out","rt");
+  if(fp == NULL)
+    printf("file error\n");
+  
+  char c;
+  int numspace = 0;
+  bool printon = false;
+  while(!feof(fp)){
+    c = fgetc(fp);
+    if(c == ' ')
+      numspace++;
+    else{
+      if(numspace == 0)
+	printf("
+    }
+  }
+}

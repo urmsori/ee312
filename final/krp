@@ -1,0 +1,376 @@
+#! /usr/local/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x7de770 .scope module, "testbench" "testbench" 2 12;
+ .timescale 0 0;
+P_0x7dc728 .param/real "HPER" 2 18, Cr<m5000000000000000gfc3>; value=2.50000
+P_0x7dc750 .param/real "PER" 2 17, Cr<m5000000000000000gfc4>; value=5.00000
+L_0x811190 .functor NOT 1, C4<z>, C4<0>, C4<0>, C4<0>;
+L_0x811470 .functor NOT 1, C4<z>, C4<0>, C4<0>, C4<0>;
+L_0x811640 .functor NOT 1, C4<z>, C4<0>, C4<0>, C4<0>;
+v0x810660_0 .var "CLK", 0 0;
+v0x810770_0 .net "DADDR", 29 0, C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>; 0 drivers
+v0x810820_0 .net "DRDATA", 31 0, L_0x8113a0; 1 drivers
+v0x8108a0_0 .net "DREQ", 0 0, C4<z>; 0 drivers
+v0x810950_0 .net "DWDATA", 31 0, C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>; 0 drivers
+v0x8109d0_0 .net "IADDR", 29 0, C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>; 0 drivers
+v0x810a50_0 .net "INSTR", 31 0, L_0x8110f0; 1 drivers
+v0x810b20_0 .net "IREQ", 0 0, C4<z>; 0 drivers
+v0x810bf0_0 .var "RST", 0 0;
+v0x810cc0_0 .net "nDRW", 0 0, C4<z>; 0 drivers
+L_0x811270 .part C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>, 2, 10;
+L_0x811550 .part C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>, 2, 10;
+S_0x80f480 .scope module, "KRP8" "KRP8" 2 33, 3 25, S_0x7de770;
+ .timescale 0 0;
+v0x8100c0_0 .net "CLK", 0 0, v0x810660_0; 1 drivers
+v0x810160_0 .alias "DADDR", 29 0, v0x810770_0;
+v0x810200_0 .alias "DRDATA", 31 0, v0x810820_0;
+v0x810280_0 .alias "DREQ", 0 0, v0x8108a0_0;
+v0x810300_0 .alias "DWDATA", 31 0, v0x810950_0;
+v0x8103b0_0 .alias "IADDR", 29 0, v0x8109d0_0;
+v0x810430_0 .alias "INSTR", 31 0, v0x810a50_0;
+v0x8104b0_0 .alias "IREQ", 0 0, v0x810b20_0;
+v0x810530_0 .net "RST", 0 0, v0x810bf0_0; 1 drivers
+v0x8105e0_0 .alias "nDRW", 0 0, v0x810cc0_0;
+S_0x80f570 .scope module, "RegFile" "REGFILE" 3 43, 4 30, S_0x80f480;
+ .timescale 0 0;
+P_0x80f668 .param/l "ATIME" 4 46, +C4<01>;
+P_0x80f690 .param/l "AW" 4 30, +C4<0101>;
+P_0x80f6b8 .param/l "ENTRY" 4 30, +C4<0100000>;
+L_0x810e70/d .functor BUFZ 32, L_0x810da0, C4<00000000000000000000000000000000>, C4<00000000000000000000000000000000>, C4<00000000000000000000000000000000>;
+L_0x810e70 .delay (1,1,1) L_0x810e70/d;
+L_0x810fd0/d .functor BUFZ 32, L_0x810f00, C4<00000000000000000000000000000000>, C4<00000000000000000000000000000000>, C4<00000000000000000000000000000000>;
+L_0x810fd0 .delay (1,1,1) L_0x810fd0/d;
+v0x80f7d0_0 .alias "CLK", 0 0, v0x8100c0_0;
+v0x80f8c0_0 .net "DI", 31 0, C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>; 0 drivers
+v0x80f960_0 .net "DOUT0", 31 0, L_0x810e70; 1 drivers
+v0x80fa00_0 .net "DOUT1", 31 0, L_0x810fd0; 1 drivers
+v0x80fa80_0 .net "RA0", 4 0, C4<zzzzz>; 0 drivers
+v0x80fb20_0 .net "RA1", 4 0, C4<zzzzz>; 0 drivers
+v0x80fc00_0 .alias "RST", 0 0, v0x810530_0;
+v0x80fca0_0 .net "WA", 4 0, C4<zzzzz>; 0 drivers
+v0x80fd90_0 .net "WEN", 0 0, C4<z>; 0 drivers
+v0x80fe30_0 .net *"_s0", 31 0, L_0x810da0; 1 drivers
+v0x80ff30_0 .net *"_s4", 31 0, L_0x810f00; 1 drivers
+v0x80ffd0 .array "ram", 31 0, 31 0;
+L_0x810da0 .array/port v0x80ffd0, C4<zzzzz>;
+L_0x810f00 .array/port v0x80ffd0, C4<zzzzz>;
+S_0x80eb30 .scope module, "INST_MEM" "SRAM" 2 46, 4 101, S_0x7de770;
+ .timescale 0 0;
+P_0x80ec28 .param/l "ATIME" 4 110, +C4<01>;
+P_0x80ec50 .param/l "AW" 4 101, +C4<01010>;
+P_0x80ec78 .param/l "BW" 4 101, +C4<0100000>;
+P_0x80eca0 .param/l "ENTRY" 4 101, +C4<010000000000>;
+P_0x80ecc8 .param/l "INITIAL" 4 101, +C4<0>;
+P_0x80ecf0 .param/str "INIT_FILE" 4 101, "inst.hex";
+L_0x8110f0/d .functor BUFZ 32, v0x80f310_0, C4<00000000000000000000000000000000>, C4<00000000000000000000000000000000>, C4<00000000000000000000000000000000>;
+L_0x8110f0 .delay (1,1,1) L_0x8110f0/d;
+v0x80ef50_0 .net "A", 9 0, L_0x811270; 1 drivers
+v0x80f010_0 .alias "CLK", 0 0, v0x8100c0_0;
+v0x80f090_0 .net "CSN", 0 0, L_0x811190; 1 drivers
+v0x80f110_0 .net "DI", 31 0, C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>; 0 drivers
+v0x80f190_0 .alias "DOUT", 31 0, v0x810a50_0;
+v0x80f230_0 .net "WEN", 0 0, C4<1>; 1 drivers
+v0x80f310_0 .var "outline", 31 0;
+v0x80f3b0 .array "ram", 1023 0, 31 0;
+S_0x7de2b0 .scope module, "DATA_MEM" "SRAM" 2 55, 4 101, S_0x7de770;
+ .timescale 0 0;
+P_0x7dd308 .param/l "ATIME" 4 110, +C4<01>;
+P_0x7dd330 .param/l "AW" 4 101, +C4<01010>;
+P_0x7dd358 .param/l "BW" 4 101, +C4<0100000>;
+P_0x7dd380 .param/l "ENTRY" 4 101, +C4<010000000000>;
+P_0x7dd3a8 .param/l "INITIAL" 4 101, +C4<0>;
+P_0x7dd3d0 .param/str "INIT_FILE" 4 101, "test.hex";
+L_0x8113a0/d .functor BUFZ 32, v0x80e9c0_0, C4<00000000000000000000000000000000>, C4<00000000000000000000000000000000>, C4<00000000000000000000000000000000>;
+L_0x8113a0 .delay (1,1,1) L_0x8113a0/d;
+v0x7f4770_0 .net "A", 9 0, L_0x811550; 1 drivers
+v0x80e650_0 .alias "CLK", 0 0, v0x8100c0_0;
+v0x80e6f0_0 .net "CSN", 0 0, L_0x811470; 1 drivers
+v0x80e790_0 .alias "DI", 31 0, v0x810950_0;
+v0x80e840_0 .alias "DOUT", 31 0, v0x810820_0;
+v0x80e8e0_0 .net "WEN", 0 0, L_0x811640; 1 drivers
+v0x80e9c0_0 .var "outline", 31 0;
+v0x80ea60 .array "ram", 1023 0, 31 0;
+E_0x7de4e0 .event posedge, v0x80e650_0;
+    .scope S_0x80f570;
+T_0 ;
+    %wait E_0x7de4e0;
+    %load/v 8, v0x80fc00_0, 1;
+    %jmp/0xz  T_0.0, 8;
+    %ix/load 3, 0, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x80ffd0, 0, 0;
+t_0 ;
+    %ix/load 3, 1, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x80ffd0, 0, 0;
+t_1 ;
+    %ix/load 3, 2, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x80ffd0, 0, 0;
+t_2 ;
+    %ix/load 3, 3, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x80ffd0, 0, 0;
+t_3 ;
+    %ix/load 3, 4, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x80ffd0, 0, 0;
+t_4 ;
+    %ix/load 3, 5, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x80ffd0, 0, 0;
+t_5 ;
+    %ix/load 3, 6, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x80ffd0, 0, 0;
+t_6 ;
+    %ix/load 3, 7, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x80ffd0, 0, 0;
+t_7 ;
+    %ix/load 3, 8, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x80ffd0, 0, 0;
+t_8 ;
+    %ix/load 3, 9, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x80ffd0, 0, 0;
+t_9 ;
+    %ix/load 3, 10, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x80ffd0, 0, 0;
+t_10 ;
+    %ix/load 3, 11, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x80ffd0, 0, 0;
+t_11 ;
+    %ix/load 3, 12, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x80ffd0, 0, 0;
+t_12 ;
+    %ix/load 3, 13, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x80ffd0, 0, 0;
+t_13 ;
+    %ix/load 3, 14, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x80ffd0, 0, 0;
+t_14 ;
+    %ix/load 3, 15, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x80ffd0, 0, 0;
+t_15 ;
+    %ix/load 3, 16, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x80ffd0, 0, 0;
+t_16 ;
+    %ix/load 3, 17, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x80ffd0, 0, 0;
+t_17 ;
+    %ix/load 3, 18, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x80ffd0, 0, 0;
+t_18 ;
+    %ix/load 3, 19, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x80ffd0, 0, 0;
+t_19 ;
+    %ix/load 3, 20, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x80ffd0, 0, 0;
+t_20 ;
+    %ix/load 3, 21, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x80ffd0, 0, 0;
+t_21 ;
+    %ix/load 3, 22, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x80ffd0, 0, 0;
+t_22 ;
+    %ix/load 3, 23, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x80ffd0, 0, 0;
+t_23 ;
+    %ix/load 3, 24, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x80ffd0, 0, 0;
+t_24 ;
+    %ix/load 3, 25, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x80ffd0, 0, 0;
+t_25 ;
+    %ix/load 3, 26, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x80ffd0, 0, 0;
+t_26 ;
+    %ix/load 3, 27, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x80ffd0, 0, 0;
+t_27 ;
+    %ix/load 3, 28, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x80ffd0, 0, 0;
+t_28 ;
+    %ix/load 3, 29, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x80ffd0, 0, 0;
+t_29 ;
+    %ix/load 3, 30, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x80ffd0, 0, 0;
+t_30 ;
+    %ix/load 3, 31, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x80ffd0, 0, 0;
+t_31 ;
+    %jmp T_0.1;
+T_0.0 ;
+    %load/v 8, v0x80fd90_0, 1;
+    %inv 8, 1;
+    %jmp/0xz  T_0.2, 8;
+    %load/v 8, v0x80f8c0_0, 32;
+    %ix/getv 3, v0x80fca0_0;
+    %jmp/1 t_32, 4;
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x80ffd0, 0, 8;
+t_32 ;
+T_0.2 ;
+T_0.1 ;
+    %jmp T_0;
+    .thread T_0;
+    .scope S_0x80eb30;
+T_1 ;
+    %end;
+    .thread T_1;
+    .scope S_0x80eb30;
+T_2 ;
+    %wait E_0x7de4e0;
+    %load/v 8, v0x80f090_0, 1;
+    %inv 8, 1;
+    %jmp/0xz  T_2.0, 8;
+    %load/v 8, v0x80f230_0, 1;
+    %jmp/0xz  T_2.2, 8;
+    %ix/getv 3, v0x80ef50_0;
+    %load/av 8, v0x80f3b0, 32;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x80f310_0, 0, 8;
+    %jmp T_2.3;
+T_2.2 ;
+    %load/v 8, v0x80f110_0, 32;
+    %ix/getv 3, v0x80ef50_0;
+    %jmp/1 t_33, 4;
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x80f3b0, 0, 8;
+t_33 ;
+T_2.3 ;
+T_2.0 ;
+    %jmp T_2;
+    .thread T_2;
+    .scope S_0x7de2b0;
+T_3 ;
+    %end;
+    .thread T_3;
+    .scope S_0x7de2b0;
+T_4 ;
+    %wait E_0x7de4e0;
+    %load/v 8, v0x80e6f0_0, 1;
+    %inv 8, 1;
+    %jmp/0xz  T_4.0, 8;
+    %load/v 8, v0x80e8e0_0, 1;
+    %jmp/0xz  T_4.2, 8;
+    %ix/getv 3, v0x7f4770_0;
+    %load/av 8, v0x80ea60, 32;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x80e9c0_0, 0, 8;
+    %jmp T_4.3;
+T_4.2 ;
+    %load/v 8, v0x80e790_0, 32;
+    %ix/getv 3, v0x7f4770_0;
+    %jmp/1 t_34, 4;
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x80ea60, 0, 8;
+t_34 ;
+T_4.3 ;
+T_4.0 ;
+    %jmp T_4;
+    .thread T_4;
+    .scope S_0x7de770;
+T_5 ;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0x810660_0, 0, 0;
+    %end;
+    .thread T_5;
+    .scope S_0x7de770;
+T_6 ;
+    %delay 3, 0;
+    %load/v 8, v0x810660_0, 1;
+    %inv 8, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0x810660_0, 0, 8;
+    %jmp T_6;
+    .thread T_6;
+    .scope S_0x7de770;
+T_7 ;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0x810bf0_0, 0, 1;
+    %delay 50, 0;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0x810bf0_0, 0, 0;
+    %delay 50000, 0;
+    %vpi_call 2 83 "$finish";
+    %end;
+    .thread T_7;
+    .scope S_0x7de770;
+T_8 ;
+    %vpi_call 2 88 "$display", "Dump variables..";
+    %vpi_call 2 89 "$dumpfile", "./DUMP_FILE";
+    %vpi_call 2 90 "$dumpvars";
+    %end;
+    .thread T_8;
+# The file index is used to find the file name in the following table.
+:file_names 5;
+    "N/A";
+    "<interactive>";
+    "testbench.v";
+    "KRP8.v";
+    "model.v";
