@@ -1,0 +1,57 @@
+ADDI r1, r2, #-2
+MOVI r2, #15
+ADDI r1, r2, SHL(#3, #5)
+ANDI r1, r2, #2
+ANDI r1, r2, LSR(#-1, #8)
+MOVI r11, #12
+ORI r10, r11, #11
+ORI r10, r11, ASR(#-1, #4)
+MOVI r8, ROR(#1, #1)
+MOVI r3, #-2
+ADD r1, r2, r3
+MOVI r4, #-5
+SUB r2, r3, r4
+MOVI r16, #4080
+NEG r12, r16
+MOVI r7, #4080
+NOT r22, r7
+AND r1, r2, r3
+OR r10, r11, r12
+XOR r2, r3, r22
+MOVI r2, #-2
+LSR r1, r2, #4
+MOVI r3, #16
+LSR r1, r2, r3
+ASR r1, r2, #4
+ASR r1, r2, r3
+SHL r1, r2, #4
+SHL r1, r2, r3
+ROR r1, r2, #3
+MOVI r3, #15
+ROR r1, r2, r3
+LEA r1, #4
+BRAL r1
+LEA r4, #0
+BREQ r4, r1
+LEA r2, #4
+BRLAL r1, r2
+MOVI r11, #2
+LEA r6, #0
+ADDI r11, r11, #-1
+BRLGE r4, r6, r11
+ADDI r0, r0, #1
+J #12
+ADDI r1, r4, #4
+ADDI r1, r4, #3
+ADDI r1, r4, #2
+JL r10, #0
+ADDI r1, r4, #4
+MOVI r1, #15
+ST r1, #4
+LD r2, #4
+MOVI r3, #1
+ST r2, r3, #4
+LD r4, r3, #4
+STR r1, #4
+LDR r0, #0
+MSN r1
